@@ -1,0 +1,111 @@
+﻿<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Owner</th>
+                <th>Type</th>
+                <th>Gender</th>
+                <th>Description</th>
+                <th>Hobbies</th>
+            </tr>
+        </thead>
+
+        <div id="modalDeleteWarningContainer" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <h4>Are you sure you want to delete?</h4>
+                    <div class="modal-body">
+                        <button  class="btn btn-primary" ng-click="p.deletePet(p.pet.id)" ui-sref="master" data-dismiss="modal" >Continue</button>
+                        <a class="btn btn-default" data-dismiss="modal" href="">Cancel</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <tbody>
+            <tr>
+                <td>{{p.pet.petName}}</td>
+                <td>{{p.pet.owner}}</td>
+                <td>{{p.pet.type}}</td>
+                <td>{{p.pet.gender}}</td>
+                <td>{{p.pet.description}}</td>
+                <td>{{p.pet.hobbies}}</td>
+                <td><img src={{p.pet.pic}} alt="Pending" style="width:128px;height:128px;" /></td>
+                
+                <td><button id="{{p.pet.id}}" class="btn btn-primary" ng-click="p.preFillForm(p.pet.id)" data-toggle="modal" data-target="#modalContainer">Edit</button></td>
+
+                <td><button id="{{p.pet.id}}" class="btn btn-primary" ng-click="p.deletePet(p.pet.id)" ui-sref="master">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container-fluid">
+        <div id="modalContainer" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    -->
+                    <div class="modal-body">
+
+                        <h1>Pet Form</h1>
+                        <form id=addForm>
+                            <div class="form-group">
+                                <label for="petName">Pet's name:</label>
+                                <input placeholder="enter pet's name" ng-model="p.petName" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="owner">Owner:</label>
+                                <input placeholder="enter owner's name" ng-model="p.owner" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Type:</label>
+                                <input placeholder="enter pet type" ng-model="p.type" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender:</label>
+                                <select class="form-group" ng-model="p.gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description/Breed:</label>
+                                <input placeholder="enter pet's description" ng-model="p.description" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="hobbies">Hobbies:</label>
+                                <input placeholder="enter pet's hobbies" ng-model="p.hobbies" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="pic">Picture:</label>
+                                <input placeholder="enter pic's image address" ng-model="p.pic" required />
+                                <br/>
+                                <label class="control-label">Or upload a picture:</label>
+                                <input type="file" class="file" multiple data-show-upload="false" data-show-caption="true" ng-model="p.pic">
+                            </div>
+                            <button id="{{p.pet.id}}" class="btn btn-primary"  ng-click="p.updatePetForm(p.pet.id)" data-dismiss="modal">Save</button>
+                            <a class="btn btn-default" data-dismiss="modal" href="#">Cancel</a>
+                        </form> <!--end tag for "addForm"-->
+
+                    </div> <!-- end tag modal-body -->
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div> <!-- end tag modal-content -->
+            </div> <!-- end tab modal-dialog -->
+        </div> <!-- end tag modalContainer -->
+    </div> <!-- end tag container-fuild -->
+</div> <!-- end tag of "container"-->

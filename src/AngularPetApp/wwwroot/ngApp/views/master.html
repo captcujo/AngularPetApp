@@ -1,0 +1,122 @@
+﻿<div class="container">
+    <div class="row">
+
+        <div class="col-xs-2">
+            <br>
+            <div class="container-fluid">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalContainer">
+                    Add a pet
+                </button>
+
+                <div id="modalContainer" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+
+                            <div class="modal-body">
+                                
+                                <h1>Pet Form</h1>
+                                <form id=addForm>
+                                    <div class="form-group">
+                                        <label for="petName">Pet's name:</label>
+                                        <input placeholder="enter pet's name" ng-model="p.petName" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="owner">Owner:</label>
+                                        <input placeholder="enter owner's name" ng-model="p.owner" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="type">Type:</label>
+                                        <input placeholder="enter pet type" ng-model="p.type" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender">Gender:</label>
+                                        <select class="form-group" ng-model="p.gender">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description/Breed:</label>
+                                        <input placeholder="enter pet's description" ng-model="p.description" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hobbies">Hobbies:</label>
+                                        <input placeholder="enter pet's hobbies" ng-model="p.hobbies" required />
+                                    </div>
+                                    <div class="form-group">
+                                        
+                                        <label for="pic">Picture:</label>
+                                        <input placeholder="enter pic's image address" ng-model="p.pic" required />
+                                        <br/>
+                                        <label class="control-label">Or upload a picture:</label>
+                                        <input type="file" class="file" multiple data-show-upload="false" data-show-caption="true" ng-model="p.pic">
+                                        
+                                    </div>
+                                    <button class="btn btn-primary" data-dismiss="modal" ng-click="p.getPetForm()">Save</button>
+                                    <a class="btn btn-default" data-dismiss="modal" href="#">Cancel</a>
+                                </form> <!--end tag for "addForm"-->
+                                
+                            </div> <!-- end tag modal-body -->
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div> <!-- end tag modal-content -->
+                    </div> <!-- end tab modal-dialog -->
+                </div> <!-- end tag modalContainer -->
+            </div> <!-- end tag container-fuild -->
+        </div> <!--end tag cols-xs-2 -->
+
+        <div class="col-xs-8">
+            <h1>Pet Listing</h1>
+            <br>
+            <div class="jumbotron">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>Pet Name</th>
+                            <th>Pet Owner</th>
+
+                        </tr>
+                    </thead>
+
+                    <div id="modalDeleteContainer" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <h4>Are you sure you want to delete?</h4>
+                                <div class="modal-body">
+                                    <button id="OK" class="btn btn-primary" data-dismiss="modal">Continue</button>
+                                    <a class="btn btn-default" data-dismiss="modal" href="list.html">Cancel</a>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="close" data-dismiss="modal">Close</button>
+                                    <!--class="btn btn-default"-->
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--end tag for  modalDeleteContainer -->
+                    <tbody id='table'>
+                        
+                        <tr ng-repeat="pet in p.pets" ui-sref="details ({id:pet.id})">
+                            <td>{{pet.petName}}</td>
+                            <td>{{pet.owner}}</td>
+                        </tr>
+                          
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-xs-2">
+            </div> <!--end tag for jumbotron -->
+        </div> <!--end tag for col-xs-8 -->
+    </div> <!--end tag for  "row" -->
+</div> <!--end tag for  for "container" -->
